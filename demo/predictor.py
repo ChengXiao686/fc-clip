@@ -121,13 +121,17 @@ class VisualizationDemo(object):
         ade20k_thing_colors = ade20k_metadata.thing_colors
         ade20k_stuff_colors = [x for x in ade20k_metadata.stuff_colors if x not in ade20k_thing_colors]
 
-        user_classes = []
+        user_classes = ['water horse', 'roadblock']
         user_colors = [random_color(rgb=True, maximum=1) for _ in range(len(user_classes))]
 
-        stuff_classes = coco_stuff_classes + ade20k_stuff_classes
-        stuff_colors = coco_stuff_colors + ade20k_stuff_colors
-        thing_classes = user_classes + coco_thing_classes + ade20k_thing_classes + lvis_classes
-        thing_colors = user_colors + coco_thing_colors + ade20k_thing_colors + lvis_colors
+        # stuff_classes = coco_stuff_classes + ade20k_stuff_classes
+        # stuff_colors = coco_stuff_colors + ade20k_stuff_colors
+        # thing_classes = user_classes + coco_thing_classes + ade20k_thing_classes + lvis_classes
+        # thing_colors = user_colors + coco_thing_colors + ade20k_thing_colors + lvis_colors
+        thing_classes = user_classes + lvis_classes
+        thing_colors = user_colors + lvis_colors
+        stuff_classes = []
+        stuff_colors = []
 
         thing_dataset_id_to_contiguous_id = {x: x for x in range(len(thing_classes))}
         DatasetCatalog.register(
