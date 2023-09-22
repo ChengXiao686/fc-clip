@@ -2,3 +2,4 @@ checkpoints
 */__pycache__
 *.pyc
 fcclip/modeling/pixel_decoder/ops
+imgs/output
