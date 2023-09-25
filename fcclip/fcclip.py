@@ -396,8 +396,9 @@ class FCCLIP(nn.Module):
 
             # This is used to filtering void predictions.
             is_void_prob = F.softmax(mask_cls_results, dim=-1)[..., -1:]
+            # cls_results.softmax(-1) * (1.0 - is_void_prob)
             mask_cls_probs = torch.cat([
-                cls_results.softmax(-1) * (1.0 - is_void_prob),
+                cls_results.softmax(-1),
                 is_void_prob], dim=-1)
             mask_cls_results = torch.log(mask_cls_probs + 1e-8)
 
